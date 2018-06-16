@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<StackPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:id="container"
+           fx:controller="controllers.HomeController">
+    <children>
+        <AnchorPane id="AnchorPane" prefHeight="672.0" styleClass="mainFxmlClass">
+            <children>
+
+                <!--Sidebar-->
+                <AnchorPane prefHeight="672.0" prefWidth="226.0" style="-fx-background-color: #90A4AE;"
+                            styleClass="sidebar">
+                    <children>
+                        <ImageView fitHeight="133.0" fitWidth="149.0" layoutX="47.0" layoutY="14.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../img/business.png"/>
+                            </image>
+                        </ImageView>
+                        <Label layoutX="35.0" layoutY="155.0" text="ESP-BANQUE" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="24.0"/>
+                            </font>
+                        </Label>
+                        <VBox layoutX="88.0" layoutY="211.0" prefHeight="461.0" prefWidth="275.0" spacing="10.0"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="211.0">
+                            <children>
+                                <JFXButton fx:id="gestion_agences_btn" buttonType="RAISED" onAction="#showAgencyLayout"
+                                           prefHeight="37.0" prefWidth="214.0" style="-fx-background-color: #546E7A;"
+                                           styleClass="sidebar-button" text="Gestion des agences" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </JFXButton>
+                                <JFXButton fx:id="gestion_comptes_btn" buttonType="RAISED"
+                                           onAction="#showAccountsLayout" prefHeight="34.0" prefWidth="214.0"
+                                           style="-fx-background-color: #546E7A;" styleClass="sidebar-button"
+                                           text="Gestion des comptes" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </JFXButton>
+                                <JFXButton fx:id="gestion_clients_btn" buttonType="RAISED" onAction="#showClientsLayout"
+                                           prefHeight="39.0" prefWidth="214.0" style="-fx-background-color: #546E7A;"
+                                           styleClass="sidebar-button" text="Gestion des clients" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </JFXButton>
+                                <JFXButton fx:id="serverConfigBtn" buttonType="RAISED"
+                                           onAction="#displayServerConfigDialog" prefHeight="36.0" prefWidth="214.0"
+                                           style="-fx-background-color: #546E7A;" styleClass="sidebar-button"
+                                           text="Paramètres" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </JFXButton>
+                            </children>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                            <padding>
+                                <Insets left="6.0" right="6.0"/>
+                            </padding>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+
+                <!--Accounts Layout-->
+                <AnchorPane fx:id="accounts_layout" layoutX="226.0" prefHeight="672.0" prefWidth="807.0"
+                            style="-fx-background-color: #fafafa;">
+                    <children>
+                        <AnchorPane layoutY="14.0" prefHeight="75.0" prefWidth="807.0">
+                            <children>
+                                <FontAwesomeIconView fill="#607d8b" glyphName="CREDIT_CARD" layoutX="21.0"
+                                                     layoutY="58.0" size="60"/>
+                                <Label layoutX="90.0" layoutY="23.0" text="Gestion des comptes" textFill="#607d8b">
+                                    <font>
+                                        <Font name="Roboto Bold" size="23.0"/>
+                                    </font>
+                                </Label>
+                                <JFXButton layoutX="646.0" layoutY="24.0" style="-fx-background-color: #0277BD;"
+                                           text="Créer un compte" textFill="WHITE" fx:id="add_account_btn" onAction="#displayAddAccountDialog">
+                                    <font>
+                                        <Font name="Roboto Medium" size="14.0"/>
+                                    </font>
+                                    <graphic>
+                                        <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="14"/>
+                                    </graphic>
+                                </JFXButton>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutY="89.0" prefHeight="583.0" prefWidth="807.0">
+                            <children>
+                                <TableView prefHeight="590.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0"
+                                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                           AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn prefWidth="37.0">
+                                            <graphic>
+                                                <CheckBox mnemonicParsing="false"/>
+                                            </graphic>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="162.0" text="N° du compte"/>
+                                        <TableColumn prefWidth="203.0" text="Libellé"/>
+                                        <TableColumn prefWidth="135.0" text="Sens"/>
+                                        <TableColumn minWidth="0.0" prefWidth="92.0" text="Solde"/>
+                                        <TableColumn prefWidth="157.0" text="Actions"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+
+                <!--Clients Layout-->
+                <AnchorPane fx:id="clients_layout" layoutX="226.0" prefHeight="672.0" prefWidth="807.0"
+                            style="-fx-background-color: #fafafa;">
+                    <children>
+                        <AnchorPane layoutY="14.0" prefHeight="75.0" prefWidth="807.0">
+                            <children>
+                                <FontAwesomeIconView fill="#607d8b" glyphName="USERS" layoutX="21.0" layoutY="58.0"
+                                                     size="60"/>
+                                <Label layoutX="90.0" layoutY="23.0" text="Gestion des clients" textFill="#607d8b">
+                                    <font>
+                                        <Font name="Roboto Bold" size="23.0"/>
+                                    </font>
+                                </Label>
+                                <JFXButton layoutX="646.0" layoutY="24.0" style="-fx-background-color: #0277BD;"
+                                           onAction="#displayAddClientDialog" fx:id="add_client_btn"
+                                           text="Ajouter un client" textFill="WHITE">
+                                    <font>
+                                        <Font name="Roboto Medium" size="14.0"/>
+                                    </font>
+                                    <graphic>
+                                        <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="14"/>
+                                    </graphic>
+                                </JFXButton>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutY="89.0" prefHeight="583.0" prefWidth="807.0">
+                            <children>
+                                <TableView prefHeight="610.0" prefWidth="834.0" AnchorPane.bottomAnchor="0.0"
+                                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                           AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn prefWidth="53.0" text="ID"/>
+                                        <TableColumn prefWidth="95.0" text="Prénom"/>
+                                        <TableColumn prefWidth="395.0" text="Nom"/>
+                                        <TableColumn prefWidth="243.0" text="Action"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+
+                <!--Agency Layout-->
+                <AnchorPane fx:id="agency_layout" layoutX="226.0" prefHeight="672.0" prefWidth="807.0"
+                            style="-fx-background-color: #fafafa;">
+                    <children>
+                        <AnchorPane layoutY="14.0" prefHeight="75.0" prefWidth="807.0">
+                            <children>
+                                <FontAwesomeIconView fill="#607d8b" glyphName="BANK" layoutX="21.0" layoutY="58.0"
+                                                     size="60"/>
+                                <Label layoutX="90.0" layoutY="23.0" text="Gestion des agences" textFill="#607d8b">
+                                    <font>
+                                        <Font name="Roboto Bold" size="23.0"/>
+                                    </font>
+                                </Label>
+                                <JFXButton fx:id="add_agence_btn" layoutX="646.0" layoutY="24.0"
+                                           onAction="#displayAddAgencyDialog" style="-fx-background-color: #0277BD;"
+                                           text="Créer une agence" textFill="WHITE">
+                                    <font>
+                                        <Font name="Roboto Medium" size="14.0"/>
+                                    </font>
+                                    <graphic>
+                                        <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="14"/>
+                                    </graphic>
+                                </JFXButton>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutY="89.0" prefHeight="583.0" prefWidth="807.0">
+                            <children>
+                                <TableView fx:id="agences_table" layoutX="9.0" layoutY="6.0" prefHeight="590.0"
+                                           prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn prefWidth="53.0" text="ID"/>
+                                        <TableColumn prefWidth="261.0" text="Nom de L'agence"/>
+                                        <TableColumn prefWidth="321.0" text="Adresse"/>
+                                        <TableColumn prefWidth="151.0" text="Action"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+
+    <!--Agency creation dialog-->
+    <JFXDialog fx:id="agencyDialog">
+        <JFXDialogLayout>
+            <heading>
+                <Label textFill="#607d8b" text="Création de l'agence">
+                    <font>
+                        <Font name="Roboto Bold" size="16.0"/>
+                    </font>
+                </Label>
+
+            </heading>
+            <body>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <JFXTextField labelFloat="true" fx:id="agencyName" focusColor="#80cbc4"
+                                      promptText="Nom de l'agence">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField labelFloat="true" layoutX="10.0" layoutY="10.0" focusColor="#80cbc4"
+                                      promptText="Adresse de l'agence">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXTextField>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </VBox>
+
+            </body>
+            <actions>
+                <JFXButton
+                        fx:id="agencySaveBtn"
+                        styleClass="dialog-accept"
+                        onAction="#addAgency"
+                        buttonType="RAISED"
+                        style="-fx-background-color: #546E7A;"
+                        textFill="WHITE" text="AJOUTER">
+                    <font>
+                        <Font name="Roboto Medium" size="14.0"/>
+                    </font>
+                </JFXButton>
+            </actions>
+        </JFXDialogLayout>
+    </JFXDialog>
+
+    <!--Client creation dialog-->
+    <JFXDialog fx:id="clientDialog">
+        <JFXDialogLayout>
+            <heading>
+                <Label textFill="#607d8b" text="Ajout du client">
+                    <font>
+                        <Font name="Roboto Bold" size="16.0"/>
+                    </font>
+                </Label>
+
+            </heading>
+            <body>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <JFXTextField labelFloat="true" fx:id="clientFirstname" focusColor="#80cbc4"
+                                      promptText="Prénom du client">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField labelFloat="true" fx:id="clientLastname" focusColor="#80cbc4"
+                                      promptText="Nom du client">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXTextField>
+                        <JFXComboBox labelFloat="false" layoutX="10.0" layoutY="10.0" focusColor="#80cbc4"
+                                     promptText="Nom de l'agence" prefHeight="25.0" prefWidth="435.0" fx:id="clientDialogComboBox">
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXComboBox>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </VBox>
+
+            </body>
+            <actions>
+                <JFXButton
+                        fx:id="clientSaveBtn"
+                        styleClass="dialog-accept"
+                        onAction="#addClient"
+                        buttonType="RAISED"
+                        style="-fx-background-color: #546E7A;"
+                        textFill="WHITE" text="AJOUTER">
+                    <font>
+                        <Font name="Roboto Medium" size="14.0"/>
+                    </font>
+                </JFXButton>
+            </actions>
+        </JFXDialogLayout>
+    </JFXDialog>
+
+    <!--Account creation dialog-->
+    <JFXDialog fx:id="accountDialog">
+        <JFXDialogLayout>
+            <heading>
+                <Label textFill="#607d8b" text="Création du compte">
+                    <font>
+                        <Font name="Roboto Bold" size="16.0"/>
+                    </font>
+                </Label>
+
+            </heading>
+            <body>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <JFXTextField labelFloat="true" fx:id="accountName" focusColor="#80cbc4"
+                                      promptText="Libellé du compte">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField labelFloat="true" fx:id="accountBalance" focusColor="#80cbc4"
+                                      promptText="Solde du compte">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXTextField>
+                        <JFXComboBox labelFloat="false" layoutX="10.0" layoutY="10.0" focusColor="#80cbc4"
+                                     promptText="Nom de l'agence" prefHeight="25.0" prefWidth="435.0" fx:id="accountDialogComboBox">
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXComboBox>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </VBox>
+
+            </body>
+            <actions>
+                <JFXButton
+                        fx:id="accountSaveBtn"
+                        styleClass="dialog-accept"
+                        onAction="#addAccount"
+                        buttonType="RAISED"
+                        style="-fx-background-color: #546E7A;"
+                        textFill="WHITE" text="AJOUTER">
+                    <font>
+                        <Font name="Roboto Medium" size="14.0"/>
+                    </font>
+                </JFXButton>
+            </actions>
+        </JFXDialogLayout>
+    </JFXDialog>
+
+    <!--Serveur Config Dialog-->
+    <JFXDialog fx:id="serverConfigDialog">
+        <JFXDialogLayout>
+            <heading>
+                <Label textFill="#607d8b" text="Connexion au serveur">
+                    <font>
+                        <Font name="Roboto Bold" size="16.0"/>
+                    </font>
+                </Label>
+
+            </heading>
+            <body>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <JFXTextField labelFloat="true" fx:id="serverIP" focusColor="#80cbc4"
+                                      promptText="Adresse IP du serveur">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="15.0" top="15.0"/>
+                            </VBox.margin>
+                        </JFXTextField>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <GridPane prefHeight="109.0" prefWidth="478.0" fx:id="spinnerPane">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        </rowConstraints>
+                        <children>
+                            <JFXSpinner prefHeight="68.0" prefWidth="478.0" fx:id="spinner">
+                                <GridPane.margin>
+                                    <Insets bottom="20.0" top="30.0"/>
+                                </GridPane.margin>
+                            </JFXSpinner>
+                        </children>
+                    </GridPane>
+                </VBox>
+
+            </body>
+            <actions>
+                <JFXButton
+                        fx:id="ipValidBtn"
+                        styleClass="dialog-accept"
+                        onAction="#connect"
+                        buttonType="RAISED"
+                        style="-fx-background-color: #546E7A;"
+                        textFill="WHITE" text="VALIDER">
+                    <font>
+                        <Font name="Roboto Medium" size="14.0"/>
+                    </font>
+                </JFXButton>
+            </actions>
+        </JFXDialogLayout>
+    </JFXDialog>
+
+
+</StackPane>
